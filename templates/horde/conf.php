@@ -27,7 +27,7 @@
 //       be unable to generate correct HTTPS URLs when a user tries to
 //       access Horde via a non-HTTPS port.
 //   2 - Attempt to auto-detect, and generate URLs appropriately.
-$conf['use_ssl'] = 2;
+$conf['use_ssl'] = 1;
 
 // What server name should we use? You'll probably know if you need to
 // change this default; only in situations where you need to override
