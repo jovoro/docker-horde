@@ -12,13 +12,18 @@ services:
     build: .
     environment:
       HORDE_SQL_USERNAME: root
-      HORDE_SQL_PASSWORD: WoDerRootlyDeMoschtHolt
+      HORDE_SQL_PASSWORD: thBOL4SIF83zBOXbwzRiBrv200hiG2
       HORDE_SQL_HOST: db
       HORDE_SQL_DATABASE: horde
-      IMP_HOSTSPEC: vodka.vrtz.ch
-      IMP_MAILDOMAIN: uxw.ch
-      INGO_SIEVE_HOST: vodka.vrtz.ch
-      INGO_SIEVE_USETLS: 'false'
+      HORDE_SQL_PORT: 3306
+      IMP_HOSTSPEC: mail.ibs-swissrealestate.com
+      IMP_MAILDOMAIN: ibs-swissrealestate.com
+      IMP_HORDEAUTH: 'true'
+      IMP_PROTOCOL: 'imap'
+      IMP_SECURE: 'ssl'
+      IMP_PORT: 993
+      INGO_IMAP_DISABLED: 'false'
+      INGO_SIEVE_DISABLED: 'true'
       HORDE_THEME: 'knttheme'
       HORDE_THEME_LOCKED: 'true'
     restart: on-failure
@@ -26,7 +31,7 @@ services:
       - db
       - memcached
     ports:
-      - "8982:80"
+      - "8981:80"
     volumes:
     - horde-turba:/var/www/html/horde/turba/config
     - horde-nag:/var/www/html/horde/nag/config
@@ -39,9 +44,9 @@ services:
       - internal
       - web
     labels:
-      - traefik.http.routers.hordeplayground.rule=Host(`hordeplayground.uxw.ch`)
-      - traefik.http.routers.hordeplayground.tls=true
-      - traefik.http.routers.hordeplayground.tls.certresolver=myresolver
+      - traefik.http.routers.ibs-horde.rule=Host(`ibs-horde.uxq.ch`)
+      - traefik.http.routers.ibs-horde.tls=true
+      - traefik.http.routers.ibs-horde.tls.certresolver=myresolver
       - traefik.docker.network=web
       - traefik.port=80
   memcached:
@@ -53,7 +58,7 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: WoDerRootlyDeMoschtHolt
+      MYSQL_ROOT_PASSWORD: thBOL4SIF83zBOXbwzRiBrv200hiG2
       MYSQL_DATABASE: horde
     command: --max_allowed_packet=32505856
     networks:

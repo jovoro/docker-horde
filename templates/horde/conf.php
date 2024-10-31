@@ -69,7 +69,7 @@ $conf['session']['name'] = 'Horde';
 $conf['session']['cache_limiter'] = 'nocache';
 $conf['session']['max_time'] = 72000;
 $conf['session']['timeout'] = 0;
-$conf['auth']['admins'] = array('Administrator');
+$conf['auth']['admins'] = array('Administrator', 'jr');
 $conf['auth']['driver'] = 'auto';
 $conf['auth']['params'] = array('username' => 'Administrator');
 $conf['prefs']['driver'] = 'Sql';
