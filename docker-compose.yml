@@ -26,7 +26,7 @@ services:
       INGO_SIEVE_DISABLED: 'true'
       HORDE_THEME: 'knttheme'
       HORDE_THEME_LOCKED: 'true'
-    restart: on-failure
+    restart: unless-stopped
     links:
       - db
       - memcached
@@ -55,6 +55,7 @@ services:
       - internal
     labels:
       - traefik.enable=false
+    restart: unless-stopped
   db:
     image: mysql:5.7
     environment:
@@ -67,6 +68,7 @@ services:
       - horde-db:/var/lib/mysql
     labels:
       - traefik.enable=false
+    restart: unless-stopped
 
 networks:
   web:
